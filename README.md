@@ -88,7 +88,9 @@ This means the Lua truncate-multiple-arguments operation of wrapping with extra 
 
 Lambdas with a first argument of `:` is replaced with `self`: `|:|self` is equivalent to `|self|self`.
 
-Lambdas with a first argument of `::` is replaced with `self` and the function scope environment is set to `self`, akin to `_ENV=self` or `setfenv(1,self)`.
+Lambdas can be used as single-argument calls, just like strings and tables: `f(||true)` is the same as `f||true`, and `f(||do return foo end)` is the same as `f||do return foo end`.  This makes the double pipe operator work like a defer operator.
+
+Lambdas with a first argument of `::` is replaced with `self` and the function scope environment is set to `self`, akin to `_ENV=self` or `setfenv(1,self)`.  But really, who uses this feature?
 
 Ex: A lambda that returns vararg will look like `|...|...`.
 

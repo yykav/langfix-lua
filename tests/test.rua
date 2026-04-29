@@ -568,19 +568,4 @@ do
 	assert.eq(t.x.y.z, 3)
 end
 
--- implicit shorthand lambdas
-do
-	local g = |x| x
-	assert.eq(g(42), 42)
-	assert.eq(g(||42)(), 42)
-
-	local h = g(||42)
-	assert(h(), 42)
-
-	local h = g||42
-	assert(h(), 42)
-
-	assert.eq((g||42)(), 42)
-end
-
 print'done'

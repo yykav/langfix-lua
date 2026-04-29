@@ -551,17 +551,6 @@ function LuaFixedParser:parse_functiondef()
 	return LuaFixedParser.super.parse_functiondef(self)
 end
 
--- allow implicit args of single lambda function
-function LuaFixedParser:parse_args()
-	-- only allow implicit arg of shorthand lambdas, not 'function' lambdas:
-	--if self:canbe('|', 'symbol') then	-- that will eat the token
-	if self.t.token == '|' and self.t.tokentype == 'symbol' then
-		return {self:parse_functiondef()}
-	end
-
-	return LuaFixedParser.super.parse_args(self)
-end
-
 --[[ the original LuaParser:parse_field function works fine, except that lambdas will get confused with key-expressions unless you wrap them in parentehsis
 -- to get around this ...
 function LuaFixedParser:parse_field()

@@ -3,6 +3,8 @@
 --------------------------------------------
 
 name = "langfix"
+git = "https://github.com/thenumbernine/langfix-lua"
+
 files = {
 	"LICENSE",
 	"README.md",
